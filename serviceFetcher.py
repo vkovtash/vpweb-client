@@ -66,11 +66,12 @@ class Show():
         self.episodeList.append(self.Episode(self,number,url,callback))
 
     def next(self):
-        if self.index +1  >= len(self.episodeList):
+        if self.index  >= len(self.episodeList):
             raise StopIteration
-        self.index = self.index + 1
 
-        return self.episodeList[self.index]
+        result=self.episodeList[self.index]
+        self.index = self.index + 1
+        return result
 
 
 class serviceFetcher():
