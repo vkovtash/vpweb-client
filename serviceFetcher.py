@@ -48,6 +48,8 @@ class Show():
         self.index=0
 
     def __iter__(self):
+        #sort episodes
+        self.episodeList = sorted(self.episodeList, key=lambda k: int(k.episodeNumber))
         return self
 
     @property
@@ -134,6 +136,8 @@ class serviceFetcher():
         #=======================================================
 
     def downloadAll(self):
+        #sort sows by season
+        self.showList = sorted(self.showList, key=lambda k: int(k.showSeason))
         for show in self.showList:
             self.downloadPoster(show.posterURL,show.posterFilename)
             for episode in show:
