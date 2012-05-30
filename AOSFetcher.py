@@ -9,7 +9,7 @@ import cookielib, downloader
 class AOSFetcher(serviceFetcher):
     SHORT_NAME='AOS'
     def downloadWorker(self,episodeUrl,tmpFilePath):
-        return True #TODO: разблокировать загрузку файлов
+        #return True #TODO: разблокировать загрузку файлов
         aosCookie = cookielib.CookieJar()
         aosCookie.set_cookie(self.makeCookie('UniversalUserID','fd720b1afbfd40d0bc484aec8651fe1e'))
         return downloader.fetchfile(episodeUrl,tmpFilePath,cookie=aosCookie)

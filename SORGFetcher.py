@@ -38,5 +38,5 @@ class SORGFetcher(serviceFetcher):
             return False
 
         logging.error(episodeURL)
-        return True #TODO: разблокировать загрузку файлов
+        #return True #TODO: разблокировать загрузку файлов
         return downloader.fetchfile(episodeURL,tmpFilePath,cookie=showCookie)

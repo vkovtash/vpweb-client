@@ -80,9 +80,9 @@ class serviceFetcher():
     SHORT_NAME='' #Требует оверрайда
     def __init__(self):
         self.showList=[]
-        self.TMP_DIR = os.path.join(LIBRARY_DIR,self.SHORT_NAME,'tmp')
-        self.COMPLETE_DIR=os.path.join(LIBRARY_DIR,self.SHORT_NAME,'complete')
-        self.POSTER_DIR=os.path.join(LIBRARY_DIR,self.SHORT_NAME,'poster')
+        self.TMP_DIR = os.path.join(LIBRARY_DIR,'tmp')
+        self.COMPLETE_DIR=os.path.join(LIBRARY_DIR,'complete')
+        self.POSTER_DIR=os.path.join(LIBRARY_DIR,'poster')
 
     def appendShow(self,showName,showSeason,posterURL):
         self.showList.append(Show(showName,showSeason,posterURL))
@@ -93,8 +93,8 @@ class serviceFetcher():
         if not os.path.exists(self.TMP_DIR):
             os.makedirs(self.TMP_DIR)
 
-        tmpFilename=os.path.join(self.TMP_DIR,episodeFilename+'.tmp')
-        completeFilename=os.path.join(self.COMPLETE_DIR,episodeFilename+'.tmp')
+        tmpFilename=os.path.join(self.TMP_DIR,episodeFilename)
+        completeFilename=os.path.join(self.COMPLETE_DIR,episodeFilename)
 
         logging.error("".join(["Begin download file ",episodeFilename, 'into ', tmpFilename]))
         if self.downloadWorker(episodeUrl,tmpFilename):
