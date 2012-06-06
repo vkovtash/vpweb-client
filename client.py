@@ -4,6 +4,7 @@ __author__ = 'kovtash'
 from AOSFetcher import AOSFetcher
 from SORGFetcher import SORGFetcher
 from vpwebAPI import vpwebAPI
+import sys
 
 class CompleteCallback():
     def __init__(self,showKey,episodeNumber):
@@ -37,6 +38,17 @@ class Fetcher():
 
 
 if __name__=='__main__':
+    try:
+        import socket
+        s = socket.socket()
+        host = socket.gethostname()
+        port = 35636    #make sure this port is not used on this system
+        s.bind((host, port))
+    except:
+        #pass
+        print "Already running. Exiting."
+        sys.exit(0)
+
     test = Fetcher([('animeonline.su',AOSFetcher),
                     ('serialsonline.org',SORGFetcher)])
     test.fetchNewEpisodeList()
