@@ -25,15 +25,19 @@ class Show():
         @property
         def episodeFilename(self):
             result="Unknown"
+            suffix = ""
             if self._parentShow is not None:
                 if self._parentShow.showName is not None:
-                    result=self._parentShow.showName
-                    result=result.replace(" ","_")
+                    result = self._parentShow.showName
+                    result = result.replace(" ","_")
                 if self._parentShow.showSeason is not None:
-                    result="".join([result,'S',self._parentShow.showSeason])
+                    suffix = "".join([suffix,'S',self._parentShow.showSeason])
 
             if self.episodeNumber is not None:
-                result="".join([result,'E',self.episodeNumber])
+                suffix = "".join([suffix,'E',self.episodeNumber])
+
+            result = "".join([result,'_',suffix])
+
             return result.strip('_')
 
         @property
