@@ -2,9 +2,12 @@
 
 __author__ = 'kovtash'
 
-import os.path, os, logging, downloader
+import os.path, os, logging, downloader, sys
 
-LIBRARY_DIR = '/Users/kovtash/vpweb'
+if sys.platform == 'darwin':
+    LIBRARY_DIR = '/Users/kovtash/vpweb'
+elif sys.platform == 'linux2':
+    LIBRARY_DIR = '/hd0/ds0/Library/vpweb'
 
 class Show():
     class Episode():
