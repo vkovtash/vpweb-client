@@ -91,7 +91,7 @@ def HTMLDocPost(url,params=None,cookie=None):
         return Resp(lxml.html.document_fromstring(doc.data),doc.info)
 
 
-def fetchfile (url,dest_filename,callback=None,cookie=None,part_size=524288,try_count=5):
+def fetchfile (url,dest_filename,callback=None,cookie=None,headers=[],part_size=524288,try_count=5):
 
     tmp_filename=dest_filename+'.tmp'
 
@@ -100,7 +100,8 @@ def fetchfile (url,dest_filename,callback=None,cookie=None,part_size=524288,try_
         opener = urllib2.build_opener(urllib2.HTTPCookieProcessor())
     else:
         opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cookie))
-
+        
+	opener.addheaders = headers
     req = urllib2.Request(url)
 
     for ctry in xrange(try_count):

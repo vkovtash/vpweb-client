@@ -12,7 +12,8 @@ class AOSFetcher(serviceFetcher):
         #return True #TODO: разблокировать загрузку файлов
         aosCookie = cookielib.CookieJar()
         aosCookie.set_cookie(self.makeCookie('UniversalUserID','fd720b1afbfd40d0bc484aec8651fe1e'))
-        return downloader.fetchfile(episodeUrl,tmpFilePath,cookie=aosCookie)
+        headers = [('Referer', 'http://animeonline.su/'),('User-agent', 'Mozilla/5.0')]
+        return downloader.fetchfile(episodeUrl,tmpFilePath,cookie=aosCookie,headers=headers)
 
     def makeCookie(self,name, value):
         return cookielib.Cookie(

@@ -7,7 +7,7 @@ import os.path, os, logging, downloader, sys
 if sys.platform == 'darwin':
     LIBRARY_DIR = '/Users/kovtash/vpweb'
 elif sys.platform == 'linux2':
-    LIBRARY_DIR = '/hd0/ds0/Library/vpweb'
+    LIBRARY_DIR = '/Volumes/Library/vpweb'
 
 class Show():
     class Episode():
@@ -103,7 +103,7 @@ class serviceFetcher():
         tmpFilename=os.path.join(self.TMP_DIR,episodeFilename)
         completeFilename=os.path.join(self.COMPLETE_DIR,episodeFilename)
 
-        logging.error("".join(["Begin download file ",episodeFilename, 'into ', tmpFilename]))
+        logging.error("".join(["Begin download file ",episodeFilename, ' into ', tmpFilename]))
         if self.downloadWorker(episodeUrl,tmpFilename):
             completeCallback.complete()
 

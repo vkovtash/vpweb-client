@@ -2,7 +2,6 @@
 
 __author__ = 'kovtash'
 from AOSFetcher import AOSFetcher
-from SORGFetcher import SORGFetcher
 from vpwebAPI import vpwebAPI
 import sys
 
@@ -34,6 +33,7 @@ class Fetcher():
                 showWorker = serviceWorker.appendShow(show['title'],show['season'],show['posterURL'])
 
                 for episode in show['episodes']:
+                    print episode['url']
                     showWorker.appendEpisode(episode['number'],episode['url'],CompleteCallback(show['showKey'],episode['number']))
 
 
@@ -49,7 +49,6 @@ if __name__=='__main__':
         print "Already running. Exiting."
         sys.exit(0)
 
-    test = Fetcher([('animeonline.su',AOSFetcher),
-                    ('serialsonline.org',SORGFetcher)])
+    test = Fetcher([('animeonline.su',AOSFetcher)])
     test.fetchNewEpisodeList()
     test.fetchAll()
