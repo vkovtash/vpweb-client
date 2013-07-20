@@ -37,7 +37,7 @@ class Show():
                     suffix = "".join([suffix,'S',self._parentShow.showSeason])
 
             if self.episodeNumber is not None:
-                suffix = "".join([suffix,'E',self.episodeNumber])
+                suffix = "".join([suffix,'E',str(self.episodeNumber)])
 
             result = "".join([result,'_',suffix])
 
